@@ -42,7 +42,7 @@ public class SignIn extends AppCompatActivity {
                 String userEmail = mEmail.getText().toString().trim();
                 Log.i("user email", userEmail);
                 DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                rootRef.child("New Users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {

@@ -69,7 +69,8 @@ public class SignUp extends AppCompatActivity {
                 UserDetails.setPassword(PasswordHolder);
                 UserDetails.setProfile(ProfileHolder);
 
-                databaseReference.child("New Users").setValue(UserDetails);
+                //String key = databaseReference.child("New Users").push().getKey();
+                databaseReference.child("New Users").push().setValue(UserDetails);
                 // Showing Toast message after successfully data submit.
                 Toast.makeText(SignUp.this, "Signed up successfully", Toast.LENGTH_LONG).show();
 
