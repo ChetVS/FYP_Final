@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@android:color/holo_blue_bright"
+    android:background="@android:color/holo_orange_light"
     android:padding="20dp">
 
     <LinearLayout
@@ -18,9 +18,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Welcome to Android navigation system"
-            android:textColor="@android:color/black"
-            android:textSize="25sp"
+            android:text="Welcome to Android navigation system!"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
@@ -30,7 +30,7 @@
             android:padding="10dp"
             android:text="Already have an account?"
             android:textColor="@android:color/black"
-            android:textSize="25sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
@@ -38,10 +38,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:background="@android:color/holo_blue_dark"
+            android:background="@android:color/holo_orange_dark"
             android:padding="3dp"
             android:text="Sign In"
-            android:textColor="@android:color/background_light"
+            android:textColor="@android:color/black"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -52,7 +52,7 @@
             android:padding="10dp"
             android:text="New user?"
             android:textColor="@android:color/black"
-            android:textSize="25sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
@@ -62,9 +62,9 @@
             android:layout_marginTop="3dp"
             android:padding="3dp"
             android:text="Sign Up"
-            android:textColor="@android:color/background_light"
+            android:textColor="@android:color/black"
             android:textSize="17sp"
             android:textStyle="bold"
-            tools:background="@android:color/holo_blue_light" />
+            tools:background="@android:color/holo_orange_dark" />
     </LinearLayout>
 </RelativeLayout>

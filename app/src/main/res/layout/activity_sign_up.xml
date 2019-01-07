@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@android:color/holo_orange_light"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@android:color/holo_purple">
+    android:padding="20dp">
 
     <TextView
         android:layout_width="fill_parent"
@@ -13,7 +13,7 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="Sign Up"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/holo_red_dark"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -29,8 +29,8 @@
         android:inputType="textCapWords"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="@android:color/background_light"
-        android:textColorHint="@android:color/background_light"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/black"
         android:textSize="16sp" />
 
     <View
@@ -50,8 +50,8 @@
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="@android:color/background_light"
-        android:textColorHint="@android:color/background_light"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/black"
         android:textSize="16sp" />
 
     <View
@@ -71,8 +71,8 @@
         android:inputType="phone"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="@android:color/background_light"
-        android:textColorHint="@android:color/background_light"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/black"
         android:textSize="16sp" />
 
     <View
@@ -97,8 +97,8 @@
         android:inputType="textPassword"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="@android:color/background_light"
-        android:textColorHint="@android:color/background_light"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/black"
         android:textSize="16sp" />
 
     <View
@@ -118,8 +118,8 @@
         android:inputType="textPassword"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="@android:color/background_light"
-        android:textColorHint="@android:color/background_light"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/black"
         android:textSize="16sp" />
 
     <LinearLayout
@@ -133,14 +133,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Monitor"
-            android:textColor="@android:color/background_light" />
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/User"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="User"
-            android:textColor="@android:color/background_light" />
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 
@@ -150,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:text="Terms_conditions"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/holo_red_dark"
         android:textSize="14sp" />
 
     <Button
@@ -158,6 +158,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:background="@android:color/holo_orange_dark"
         android:padding="3dp"
         android:text="SignUp"
         android:textColor="@android:color/background_dark"
