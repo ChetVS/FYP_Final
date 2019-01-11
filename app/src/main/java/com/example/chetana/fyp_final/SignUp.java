@@ -68,14 +68,20 @@ public class SignUp extends AppCompatActivity {
                 UserDetails.setEmail(EmailHolder);
                 UserDetails.setPassword(PasswordHolder);
                 UserDetails.setProfile(ProfileHolder);
+                if (ProfileHolder.equals("Monitor"))
+                {
+                    databaseReference.child("Monitors").push().setValue(UserDetails);
+                }
+                else
+                {
+                    databaseReference.child("Visually impaired").push().setValue(UserDetails);
+                }
 
-                //String key = databaseReference.child("New Users").push().getKey();
-                databaseReference.child("New Users").push().setValue(UserDetails);
                 // Showing Toast message after successfully data submit.
                 Toast.makeText(SignUp.this, "Signed up successfully", Toast.LENGTH_LONG).show();
 
                 Intent myIntent = new Intent(SignUp.this,
-                        SignIn.class);
+                        monitor_profile.class);
                 startActivity(myIntent);
             }
         });

@@ -4,9 +4,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 public class Userprofile extends AppCompatActivity implements SensorEventListener{
@@ -48,6 +47,7 @@ public class Userprofile extends AppCompatActivity implements SensorEventListene
             }
             lastUpdate = actualTime;
             Toast.makeText(this, "Its an emergency !!", Toast.LENGTH_SHORT).show();
+
         }
     }
 

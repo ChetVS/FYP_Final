@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class SignIn extends AppCompatActivity {
     Button button;
     EditText mEmail, mPassword;
-    Button btnSignIn,btnSignOut,btnViewDatabase;
+    Button btnSignIn;
     Firebase firebase;
     DatabaseReference databaseReference;
 
@@ -42,7 +42,7 @@ public class SignIn extends AppCompatActivity {
                 String userEmail = mEmail.getText().toString().trim();
                 Log.i("user email", userEmail);
                 DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                rootRef.child("New Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                rootRef.child("Monitors").orderByChild("email").equalTo(userEmail).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -56,10 +56,11 @@ public class SignIn extends AppCompatActivity {
                                     Toast.makeText(SignIn.this, "Password is wrong", Toast.LENGTH_LONG).show();
                                 }
                             }
-                        }else {
+                        } else {
                             Toast.makeText(SignIn.this, "User not found", Toast.LENGTH_LONG).show();
                         }
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 

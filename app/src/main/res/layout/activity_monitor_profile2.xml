@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:background="@android:color/holo_orange_dark"
+            android:onClick="btnClick"
             android:padding="3dp"
             android:text="Monitor"
             android:textColor="@android:color/background_dark"

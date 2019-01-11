@@ -21,6 +21,7 @@ public class Screen1 extends AppCompatActivity {
                 Intent myIntent = new Intent(Screen1.this,
                         SignIn.class);
                 startActivity(myIntent);
+                finish();
             }
         });
         button = (Button) findViewById(R.id.button2);
