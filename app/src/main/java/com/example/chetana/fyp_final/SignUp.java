@@ -3,6 +3,7 @@ package com.example.chetana.fyp_final;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +12,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUp extends AppCompatActivity {
     Button button;
@@ -60,7 +64,7 @@ public class SignUp extends AppCompatActivity {
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SignUp_Model UserDetails = new SignUp_Model();
+                final SignUp_Model UserDetails = new SignUp_Model();
                 GetDataFromEditText();
 
                 UserDetails.setFullName(FullNameHolder);
@@ -68,21 +72,49 @@ public class SignUp extends AppCompatActivity {
                 UserDetails.setEmail(EmailHolder);
                 UserDetails.setPassword(PasswordHolder);
                 UserDetails.setProfile(ProfileHolder);
-                if (ProfileHolder.equals("Monitor"))
-                {
-                    databaseReference.child("Monitors").push().setValue(UserDetails);
-                }
-                else
-                {
-                    databaseReference.child("Visually impaired").push().setValue(UserDetails);
-                }
 
-                // Showing Toast message after successfully data submit.
-                Toast.makeText(SignUp.this, "Signed up successfully", Toast.LENGTH_LONG).show();
+                if(ProfileHolder.equals("Monitor")){
+                    databaseReference.child("Monitors").orderByChild("email").equalTo(EmailHolder).addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()){
+                                EmailEditText.setText("");
+                                Toast.makeText(getApplicationContext(), "Email Id already exists !", Toast.LENGTH_SHORT).show();
+                            }else {
+                                databaseReference.child("Monitors").push().setValue(UserDetails);
+                                Toast.makeText(SignUp.this, "Signed up successfully", Toast.LENGTH_LONG).show();
+                                Intent myIntent = new Intent(SignUp.this,
+                                        SignIn.class);
+                                startActivity(myIntent);
+                            }
+                        }
 
-                Intent myIntent = new Intent(SignUp.this,
-                        monitor_profile.class);
-                startActivity(myIntent);
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }else {
+                    databaseReference.child("Visually impaired").orderByChild("email").equalTo(EmailHolder).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()){
+                                EmailEditText.setText("");
+                                Toast.makeText(getApplicationContext(), "Email Id already exists !", Toast.LENGTH_SHORT).show();
+                            }else {
+                                databaseReference.child("Visually impaired").push().setValue(UserDetails);Toast.makeText(SignUp.this, "Signed up successfully", Toast.LENGTH_LONG).show();
+                                Intent myIntent = new Intent(SignUp.this,
+                                        SignIn.class);
+                                startActivity(myIntent);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
             }
         });
     }
@@ -93,5 +125,4 @@ public class SignUp extends AppCompatActivity {
         PasswordHolder = PasswordEditText.getText().toString().trim();
         PhoneNumberHolder = MobileNumberEditText.getText().toString().trim();
     }
-
 }
