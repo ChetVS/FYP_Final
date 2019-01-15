@@ -47,7 +47,7 @@ public class SignIn extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot user : dataSnapshot.getChildren()) {
-                                SignUp_Model Userdetails = user.getValue(SignUp_Model.class);
+                                SignUp_Model_Monitor Userdetails = user.getValue(SignUp_Model_Monitor.class);
                                 Log.i("password", Userdetails.password);
                                 if (Userdetails.password.equals(mPassword.getText().toString().trim())) {
                                     Intent intent = new Intent(SignIn.this, monitor_profile.class);

@@ -139,7 +139,7 @@
             android:id="@+id/User"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User"
+            android:text="Visually impaired"
             android:textColor="@android:color/black" />
 
     </LinearLayout>

@@ -1,13 +1,13 @@
 package com.example.chetana.fyp_final;
 
-public class SignUp_Model {
+public class SignUp_Model_Monitor {
     private String FullName;
     private String Email;
     private String Mobile_Number;
     public String password;
     private String Profile;
 
-    public  SignUp_Model(){}
+    public SignUp_Model_Monitor(){}
 
     public String getFullName() {
         return FullName;

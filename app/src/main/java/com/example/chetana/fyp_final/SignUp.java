@@ -23,7 +23,7 @@ public class SignUp extends AppCompatActivity {
     Button SignUp, monitor , user ;
     CheckBox TC;
     EditText FullNameEditText,EmailEditText,PasswordEditText,ConfrimPasswordEditText,MobileNumberEditText;
-    String FullNameHolder,EmailHolder,PasswordHolder,PhoneNumberHolder, ProfileHolder;
+    String FullNameHolder,EmailHolder,PasswordHolder,PhoneNumberHolder, ProfileHolder, LatHolder, LngHolder;
     Firebase firebase;
     DatabaseReference databaseReference;
     public static final String Firebase_Server_URL = "https://finalyp-c34d9.firebaseio.com/";
@@ -59,21 +59,22 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ProfileHolder="User";
+                LatHolder="Null";
+                LngHolder="Null";
             }
         });
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final SignUp_Model UserDetails = new SignUp_Model();
+                final SignUp_Model_Monitor UserDetails = new SignUp_Model_Monitor();
+                final SignUp_Model_VI UserDetails_VI = new SignUp_Model_VI();
                 GetDataFromEditText();
-
-                UserDetails.setFullName(FullNameHolder);
-                UserDetails.setMobile_Number(PhoneNumberHolder);
-                UserDetails.setEmail(EmailHolder);
-                UserDetails.setPassword(PasswordHolder);
-                UserDetails.setProfile(ProfileHolder);
-
-                if(ProfileHolder.equals("Monitor")){
+                if (ProfileHolder.equals("Monitor")) {
+                    UserDetails.setFullName(FullNameHolder);
+                    UserDetails.setMobile_Number(PhoneNumberHolder);
+                    UserDetails.setEmail(EmailHolder);
+                    UserDetails.setPassword(PasswordHolder);
+                    UserDetails.setProfile(ProfileHolder);
                     databaseReference.child("Monitors").orderByChild("email").equalTo(EmailHolder).addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -95,14 +96,22 @@ public class SignUp extends AppCompatActivity {
                         }
                     });
                 }else {
-                    databaseReference.child("Visually impaired").orderByChild("email").equalTo(EmailHolder).addListenerForSingleValueEvent(new ValueEventListener() {
+                        UserDetails_VI.setFullName(FullNameHolder);
+                        UserDetails_VI.setMobile_Number(PhoneNumberHolder);
+                        UserDetails_VI.setEmail(EmailHolder);
+                        UserDetails_VI.setPassword(PasswordHolder);
+                        UserDetails_VI.setProfile(ProfileHolder);
+                        UserDetails_VI.setLat(LatHolder);
+                        UserDetails_VI.setLng(LngHolder);
+                        databaseReference.child("Visually Impaired").orderByChild("email").equalTo(EmailHolder).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
                                 EmailEditText.setText("");
                                 Toast.makeText(getApplicationContext(), "Email Id already exists !", Toast.LENGTH_SHORT).show();
                             }else {
-                                databaseReference.child("Visually impaired").push().setValue(UserDetails);Toast.makeText(SignUp.this, "Signed up successfully", Toast.LENGTH_LONG).show();
+                                databaseReference.child("Visually Impaired").push().setValue(UserDetails_VI);
+                                Toast.makeText(SignUp.this, "Signed up successfully", Toast.LENGTH_LONG).show();
                                 Intent myIntent = new Intent(SignUp.this,
                                         SignIn.class);
                                 startActivity(myIntent);
